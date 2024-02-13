@@ -3,15 +3,15 @@ import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
 
 const CHOICES = [
   {
-    name: "rock",
+    name: "Batu",
     uri: "http://pngimg.com/uploads/stone/stone_PNG13622.png",
   },
   {
-    name: "paper",
+    name: "Kertas",
     uri: "https://www.stickpng.com/assets/images/5887c26cbc2fc2ef3a186046.png",
   },
   {
-    name: "scissors",
+    name: "Gunting",
     uri: "http://pluspng.com/img-png/png-hairdressing-scissors-beauty-salon-scissors-clipart-4704.png",
   },
 ];
@@ -23,17 +23,17 @@ const getRoundOutcome = (userChoice) => {
   const computerChoice = randomComputerChoice().name;
   let result;
 
-  if (userChoice === "rock") {
-    result = computerChoice === "scissors" ? "Victory!" : "Defeat!";
+  if (userChoice === "Batu") {
+    result = computerChoice === "Gunting" ? "Menang" : "kalah!";
   }
-  if (userChoice === "paper") {
-    result = computerChoice === "rock" ? "Victory!" : "Defeat!";
+  if (userChoice === "kertas") {
+    result = computerChoice === "Batu" ? "Menang!" : "Kalah!";
   }
-  if (userChoice === "scissors") {
-    result = computerChoice === "paper" ? "Victory!" : "Defeat!";
+  if (userChoice === "Gunting") {
+    result = computerChoice === "kertas" ? "Menang!" : "Kalah!";
   }
 
-  if (userChoice === computerChoice) result = "Tie game!";
+  if (userChoice === computerChoice) result = "SERI";
   return [result, computerChoice];
 };
 
@@ -81,8 +81,8 @@ export default function App() {
   };
 
   const getResultColor = () => {
-    if (gamePrompt === "Victory!") return "green";
-    if (gamePrompt === "Defeat!") return "red";
+    if (gamePrompt === "Menang!") return "green";
+    if (gamePrompt === "Kalah!") return "red";
     return null;
   };
 
