@@ -82,7 +82,9 @@ export default function App() {
       setUserScore(userScore + 1);
     } else if (result === "Defeat!") {
       setComputerScore(computerScore + 1);
-      setLives(lives - 1);
+      if(lives > 0) {
+        setLives(lives - 1);
+      }
     }
 
     setGamePrompt(result);
