@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Text, View, Image, StyleSheet, TouchableOpacity } from "react-native";
+import SplashScreen from './SplashScreen';
 
 const CHOICES = [
   {
@@ -35,6 +36,10 @@ const getRoundOutcome = (userChoice) => {
 
   if (userChoice === computerChoice) result = "Tie game!";
   return [result, computerChoice];
+};
+
+const App = () => {
+  return <SplashScreen />
 };
 
 const Button = (props) => (
