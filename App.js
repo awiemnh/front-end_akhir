@@ -1,20 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { NavigationAction } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import SplashScreen from './src/screens/SplashScreen';
 import OptionScreen from './src/screens/Login';
+import DaftarScreen from './src/screens/Daftar';
 
-
-const Stack = createStackNavigator ();
-
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <SplashScreen />
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Splash">
+          <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Login" component={OptionScreen} options={{ title: 'Login' }} />
+          <Stack.Screen name="Daftar" component={DaftarScreen} options={{ title: 'Daftar' }} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <StatusBar style="auto" />
     </View>
   );
 }
@@ -23,10 +28,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
 
 
 // import React, { useState } from "react";

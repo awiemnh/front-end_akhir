@@ -24,7 +24,7 @@ const DaftarScreen = () => {
   );
 };
 
-cconst styles = StyleSheet.create({
+const styles = StyleSheet.create({
     DaftarScreen: {
       position: "relative",
       display: "flex",
@@ -222,6 +222,6 @@ cconst styles = StyleSheet.create({
       fontWeight: "500",
       textAlign: "center",
     },
-  };
+  })
 
 export default DaftarScreen;

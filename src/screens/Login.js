@@ -1,7 +1,11 @@
 import React from "react";
-import { StyleSheet, Image, Text, View } from "react-native";
+import { StyleSheet, Image, Text, View, TouchableOpacity } from "react-native"; 
 
-const OptionScreen = () => {
+const OptionScreen = ({navigation}) => {
+  const handleBuatAkunPress = () => {
+    navigation.navigate("Daftar"); // Navigate to the 'Daftar' screen
+  };
+
   return (
     <View style={styles.OptionScreen}>
       <Image
@@ -46,7 +50,9 @@ const OptionScreen = () => {
             <View style={styles.Button1}>
               <Text style={styles.Button}>Login</Text>
             </View>
-            <Text style={styles.BuatAkunBaru}>Buat akun baru</Text>
+            <TouchableOpacity onPress={handleBuatAkunPress}>
+              <Text style={styles.BuatAkunBaru}>Buat akun baru</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </View>

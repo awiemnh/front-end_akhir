@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import { StyleSheet, Image, Text, View } from "react-native";
 
-const SplashScreen = () => {
+const SplashScreen = ({navigation}) => {
+  useEffect(() => {
+    // Navigate to the login screen after 2 seconds
+    const timer = setTimeout(() => {
+      navigation.replace('Login'); // Use replace instead of navigate to prevent the user from going back to the splash screen
+    }, 2000);
+
+    // Clear the timer if the component unmounts
+    return () => clearTimeout(timer);
+  }, []);
   const images = [
     {
       uri:
