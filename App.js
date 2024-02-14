@@ -3,7 +3,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import BerandaScreen from './src/screens/BerandaScreen';
+import BerandaScreen from './src/screens/OptionScreen';
 import MasukScreen from './src/screens/MasukScreen';
 import Sign
 
