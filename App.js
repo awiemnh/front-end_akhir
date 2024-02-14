@@ -5,7 +5,10 @@ import { NavigationAction } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import SplashScreen from './src/screens/SplashScreen';
-import OptionScreen from './src/screens/OptionScreen';
+import OptionScreen from './src/screens/Login';
+
+
+const Stack = createStackNavigator ();
 
 
 export default function App() {
