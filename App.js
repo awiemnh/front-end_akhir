@@ -12,6 +12,7 @@ const Batu = require("./assets/batu.png");
 const Kertas = require("./assets/kertas.png");
 const Gunting = require("./assets/gunting.png");
 const Background = require("./assets/background.jpg");
+const Versus = require("./assets/versus.png");
 
 const CHOICES = [
   {
@@ -134,7 +135,8 @@ export default function App() {
         </Text>
         <View style={styles.choicesContainer}>
           <ChoiceCard player="Player" choice={userChoice} />
-          <Text style={{ color: "#250902", fontFamily: "Roboto" }}>vs</Text>
+          {/* <Text style={{ color: "#250902", fontFamily: "Roboto" }}>vs</Text> */}
+          <Image source={Versus} style={styles.versus} />
           <ChoiceCard player="Computer" choice={computerChoice} />
         </View>
         {CHOICES.map((choice) => {
@@ -215,4 +217,7 @@ const styles = StyleSheet.create({
     height: 150,
     padding: 10,
   },
+  // versus:{
+
+  // }
 });
