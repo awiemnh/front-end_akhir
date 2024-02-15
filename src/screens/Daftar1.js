@@ -37,11 +37,17 @@ export default function Daftar() {
       </View>
       <View style={styles.card}>
         <Text
-          style={{ textAlign: "center", fontSize: 40, fontFamily: "Rubik" }}
+          style={{
+            textAlign: "center",
+            fontSize: 30,
+            fontFamily: "Rubik",
+            fontWeight: "bold",
+            margin: 10,
+          }}
         >
           Daftar
         </Text>
-        <Text style={{ textAlign: "center", fontSize: 20 }}>
+        <Text style={{ textAlign: "center", fontSize: 20, color: "#858494" }}>
           Silahkan daftar untuk menikmati permainan
         </Text>
 
@@ -60,9 +66,16 @@ export default function Daftar() {
             onChangeText={(text) => setPassword(text)}
             value={password}
           />
+          <TextInput
+            style={styles.input}
+            placeholder="Konfimasi Password"
+            secureTextEntry={true}
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+          />
 
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Login</Text>
+            <Text style={styles.buttonText}>Daftar</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -78,6 +91,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
+    marginTop: 50,
     marginBottom: 30,
   },
   background: {
@@ -103,7 +117,7 @@ const styles = StyleSheet.create({
     marginBottom: 70,
     borderRadius: 40,
     width: 343,
-    height: 396,
+    height: 420,
   },
   title: {
     fontSize: 24,
