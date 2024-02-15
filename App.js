@@ -7,6 +7,7 @@ import SplashScreen from "./src/screens/SplashScreen";
 import OptionScreen from "./src/screens/Login";
 import DaftarScreen from "./src/screens/Daftar";
 import DaftarScreen1 from "./src/screens/Daftar1";
+import Gameplay from "./src/components/GamePlay";
 
 const Stack = createStackNavigator();
 
@@ -38,11 +39,15 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {/* <SplashScreen /> */}
-      {/* <Game /> */}
-      {/* <Login /> */}
-      {/* <DaftarScreen1 /> */}
-      <OptionScreen />
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Splash">
+          <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Login" component={OptionScreen} options={{ title: 'Login' }} />
+          <Stack.Screen name="Daftar" component={DaftarScreen} options={{ title: 'Daftar' }} />
+          <Stack.Screen name="Gameplay" component={Gameplay} options={{ title: 'Game' }} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <StatusBar style="auto" />
     </View>
   );
 }

@@ -23,14 +23,20 @@ export default function Daftar() {
   const [password, setPassword] = useState("");
 
   // Fungsi untuk menangani login
-  const handleLogin = () => {
-    // Logika autentikasi bisa ditambahkan di sini
-    // Misalnya, memeriksa username dan password dengan data di server
-    console.log("Username:", username);
-    console.log("Password:", password);
-    // ... logika autentikasi lainnya
+  const handleLogin = async() => {
+    try {
+      const response = await axios.post("http://localhost:8000/api/login",{ username, password });
+      const token = response.data.token;
+      setToken(token);
+      navigation.navigate("Game", { username, token });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
+  const handleDaftar = () => {
+      navigation.navigate("Daftar");
+  };
   return (
     <ScrollView>
       <ImageBackground
@@ -88,7 +94,7 @@ export default function Daftar() {
                 <TouchableOpacity style={styles.button} onPress={handleLogin}>
                   <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button1} onPress={handleLogin}>
+                <TouchableOpacity style={styles.button1} onPress={handleDaftar}>
                   <Text style={styles.buttonText1}>Buat Akun Baru</Text>
                 </TouchableOpacity>
               </View>
