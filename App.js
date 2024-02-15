@@ -1,25 +1,48 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import SplashScreen from './src/screens/SplashScreen';
-import OptionScreen from './src/screens/Login';
-import DaftarScreen from './src/screens/Daftar';
+import SplashScreen from "./src/screens/SplashScreen";
+import OptionScreen from "./src/screens/Login";
+import DaftarScreen from "./src/screens/Daftar";
+import DaftarScreen1 from "./src/screens/Daftar1";
 
 const Stack = createStackNavigator();
 
 export default function App() {
+  // return (
+  //   <View style={styles.container}>
+  //     <NavigationContainer>
+  //       <Stack.Navigator initialRouteName="Splash">
+  //         <Stack.Screen
+  //           name="Splash"
+  //           component={SplashScreen}
+  //           options={{ headerShown: false }}
+  //         />
+  //         <Stack.Screen
+  //           name="Login"
+  //           component={OptionScreen}
+  //           options={{ title: "Login" }}
+  //         />
+  //         <Stack.Screen
+  //           name="Daftar1"
+  //           component={DaftarScreen1}
+  //           options={{ title: "Daftar1" }}
+  //         />
+  //       </Stack.Navigator>
+  //     </NavigationContainer>
+  //     <StatusBar style="auto" />
+  //   </View>
+  // );
+
   return (
     <View style={styles.container}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Splash">
-          <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
-          <Stack.Screen name="Login" component={OptionScreen} options={{ title: 'Login' }} />
-          <Stack.Screen name="Daftar" component={DaftarScreen} options={{ title: 'Daftar' }} />
-        </Stack.Navigator>
-      </NavigationContainer>
-      <StatusBar style="auto" />
+      {/* <SplashScreen /> */}
+      {/* <Game /> */}
+      {/* <Login /> */}
+      {/* <DaftarScreen1 /> */}
+      <OptionScreen />
     </View>
   );
 }
@@ -27,7 +50,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
 });
 
@@ -40,7 +63,6 @@ const styles = StyleSheet.create({
 //   },
 // });
 
-
 // import React, { useState } from "react";
 // import {
 //   Text,
@@ -51,7 +73,6 @@ const styles = StyleSheet.create({
 //   TouchableOpacity,
 // } from "react-native";
 // import SplashScreen from "./src/screens/SplashScreen";
-
 
 // // const Batu = require("./assets/batu.png");
 // // const Kertas = require("./assets/kertas.png");
@@ -266,7 +287,6 @@ const styles = StyleSheet.create({
 
 // //   // }
 // // });
-
 
 // // import { StatusBar } from "expo-status-bar";
 // // import React from "react";
