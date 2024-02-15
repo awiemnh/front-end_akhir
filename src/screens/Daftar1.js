@@ -10,6 +10,9 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+
+
+
 const Background = require("../../assets/background.jpg");
 const image = require("../../assets/gabungan.png");
 
