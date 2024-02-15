@@ -18,15 +18,19 @@ const image = require("../../assets/gabungan.png");
 
 export default function Daftar() {
   const [username, setUsername] = useState("");
+  //tambah email
   const [password, setPassword] = useState("");
 
   // Fungsi untuk menangani login
-  const handleLogin = () => {
-    // Logika autentikasi bisa ditambahkan di sini
-    // Misalnya, memeriksa username dan password dengan data di server
-    console.log("Username:", username);
-    console.log("Password:", password);
-    // ... logika autentikasi lainnya
+  const handleSignup =async () => {
+    try {
+      const response = await axios.post("http://localhost:8000/api/login",{ username, password });
+      const token = response.data.token;
+      //respone sukses
+      navigation.navigate("Daftar");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -61,6 +65,7 @@ export default function Daftar() {
             onChangeText={(text) => setUsername(text)}
             value={username}
           />
+          email
           <TextInput
             style={styles.input}
             placeholder="Password"
