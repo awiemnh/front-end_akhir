@@ -8,11 +8,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-const Batu = require("./assets/batu.png");
-const Kertas = require("./assets/kertas.png");
-const Gunting = require("./assets/gunting.png");
-const Background = require("./assets/background.jpg");
-const Versus = require("./assets/versus.png");
+const Batu = require("../../assets/batu.png");
+const Kertas = require("../../assets/kertas.png");
+const Gunting = require("../../assets/gunting.png");
+const Background = require("../../assets/background.jpg");
+const Versus = require("../../assets/versus.png");
 
 const CHOICES = [
   {
