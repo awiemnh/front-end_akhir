@@ -25,7 +25,7 @@ const Login = ({ navigation }) => {
   // Function to handle login
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:8000/api/login", {
+      const response = await axios.post("https://proper-stirring-serval.ngrok-free.app/api/login", {
         username,
         password,
       });
