@@ -1,6 +1,6 @@
-// import libr or component or screen or items
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
+import axios from "axios";
 import {
   StyleSheet,
   Text,
@@ -17,26 +17,31 @@ import {
 const Background = require("../../assets/background.jpg");
 const image = require("../../assets/gabungan.png");
 
-// for be
-export default function Daftar() {
+const Login = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState('');
 
-  // Fungsi untuk menangani login
-  const handleLogin = async() => {
+  // Function to handle login
+  const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:8000/api/login",{ username, password });
+      const response = await axios.post("http://localhost:8000/api/login", {
+        username,
+        password,
+      });
       const token = response.data.token;
       setToken(token);
-      navigation.navigate("Game", { username, token });
+      navigation.navigate("Gameplay", { username, token });
     } catch (error) {
       console.error(error);
     }
   };
 
+  // Function to handle registration
   const handleDaftar = () => {
-      navigation.navigate("Daftar");
+    navigation.navigate("Daftar");
   };
+
   return (
     <ScrollView>
       <ImageBackground
@@ -49,7 +54,6 @@ export default function Daftar() {
             <View
               style={{
                 flex: 1,
-                // backgroundColor: "#fff",
                 alignItems: "center",
                 justifyContent: "center",
                 alignItems: "center",
@@ -94,7 +98,10 @@ export default function Daftar() {
                 <TouchableOpacity style={styles.button} onPress={handleLogin}>
                   <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button1} onPress={handleDaftar}>
+                <TouchableOpacity
+                  style={styles.button1}
+                  onPress={handleDaftar}
+                >
                   <Text style={styles.buttonText1}>Buat Akun Baru</Text>
                 </TouchableOpacity>
               </View>
@@ -104,9 +111,8 @@ export default function Daftar() {
       </ImageBackground>
     </ScrollView>
   );
-}
+};
 
-// styling for
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -191,3 +197,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+export default Login;
