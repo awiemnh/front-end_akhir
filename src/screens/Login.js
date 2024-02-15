@@ -1,10 +1,19 @@
 // import libr or component or screen or items
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, View, ImageBackground, Image, TextInput, Button, TouchableOpacity } from "react-native";
-import { ScrollView } from "react-native";
-
-// define items
+import {
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  Image,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+} from "react-native";
 const Background = require("../../assets/background.jpg");
 const image = require("../../assets/gabungan.png");
 
@@ -12,7 +21,6 @@ const image = require("../../assets/gabungan.png");
 export default function Daftar() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
 
   // Fungsi untuk menangani login
   const handleLogin = () => {
@@ -25,60 +33,74 @@ export default function Daftar() {
 
   return (
     <ScrollView>
-    <ImageBackground
-      source={Background}
-      resizeMode="cover"
-      style={styles.background}
-    >
-      <View>
-        <Image source={image} style={styles.gambar1} />
-      </View>
-      <View style={styles.card}>
-        <Text
-          style={{
-            textAlign: "center",
-            fontSize: 30,
-            fontFamily: "Rubik",
-            fontWeight: "bold",
-            margin: 10,
-            marginTop: 30,
-          }}
-        >
-          Masuk atau Daftar
-        </Text>
-        <Text style={{ textAlign: "center", fontSize: 20, color: "#858494" }}>
-          Silahkan daftar untuk menikmati permainan
-        </Text>
+      <ImageBackground
+        source={Background}
+        resizeMode="cover"
+        style={styles.background}
+      >
+        <KeyboardAvoidingView behavior={"position"}>
+          <ScrollView>
+            <View
+              style={{
+                flex: 1,
+                // backgroundColor: "#fff",
+                alignItems: "center",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Image source={image} style={styles.gambar1} />
+            </View>
+            <View style={styles.card}>
+              <Text
+                style={{
+                  textAlign: "center",
+                  fontSize: 30,
+                  fontFamily: "Rubik",
+                  fontWeight: "bold",
+                  margin: 10,
+                  marginTop: 30,
+                }}
+              >
+                Masuk atau Daftar
+              </Text>
+              <Text
+                style={{ textAlign: "center", fontSize: 20, color: "#858494" }}
+              >
+                Silahkan daftar untuk menikmati permainan
+              </Text>
 
-        <View style={styles.container}>
-          <TextInput
-            style={styles.input}
-            placeholder="Username"
-            onChangeText={(text) => setUsername(text)}
-            value={username}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            secureTextEntry={true}
-            onChangeText={(text) => setPassword(text)}
-            value={password}
-          />
+              <View style={styles.container}>
+                <TextInput
+                  style={styles.input}
+                  placeholder="Username"
+                  onChangeText={(text) => setUsername(text)}
+                  value={username}
+                />
+                <TextInput
+                  style={styles.input}
+                  placeholder="Password"
+                  secureTextEntry={true}
+                  onChangeText={(text) => setPassword(text)}
+                  value={password}
+                />
 
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Login</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button1} onPress={handleLogin}>
-            <Text style={styles.buttonText1}>Buat Akun Baru</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </ImageBackground>
+                <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                  <Text style={styles.buttonText}>Login</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.button1} onPress={handleLogin}>
+                  <Text style={styles.buttonText1}>Buat Akun Baru</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </ImageBackground>
     </ScrollView>
   );
 }
 
-// styling for 
+// styling for
 const styles = StyleSheet.create({
   container: {
     flex: 1,
