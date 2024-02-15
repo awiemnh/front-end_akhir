@@ -12,21 +12,24 @@ import {
 } from "react-native";
 
 
-
 const Background = require("../../assets/background.jpg");
 const image = require("../../assets/gabungan.png");
 
 export default function Daftar() {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   // Fungsi untuk menangani login
-  const handleLogin = () => {
-    // Logika autentikasi bisa ditambahkan di sini
-    // Misalnya, memeriksa username dan password dengan data di server
-    console.log("Username:", username);
-    console.log("Password:", password);
-    // ... logika autentikasi lainnya
+  const handleSignup =async () => {
+    try {
+      const response = await axios.post("https://proper-stirring-serval.ngrok-free.app/api/signup",{ username, password });
+      const token = response.data.token;
+      res.status(200).json({ message: 'Sign Up successful' });
+      navigation.navigate("Daftar");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -63,6 +66,12 @@ export default function Daftar() {
           />
           <TextInput
             style={styles.input}
+            placeholder="Email"
+            onChangeText={(text) => setEmail(text)}
+            value={email}
+          />
+          <TextInput
+            style={styles.input}
             placeholder="Password"
             secureTextEntry={true}
             onChangeText={(text) => setPassword(text)}
@@ -76,7 +85,7 @@ export default function Daftar() {
             value={password}
           />
 
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <TouchableOpacity style={styles.button} onPress={handleSignup}>
             <Text style={styles.buttonText}>Daftar</Text>
           </TouchableOpacity>
         </View>
@@ -153,3 +162,4 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
 });
+
