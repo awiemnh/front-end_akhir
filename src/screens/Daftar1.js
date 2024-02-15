@@ -52,7 +52,6 @@ export default function Daftar() {
         </Text>
 
         <View style={styles.container}>
-          <Text style={styles.title}>Login</Text>
           <TextInput
             style={styles.input}
             placeholder="Username"
