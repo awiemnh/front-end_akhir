@@ -9,6 +9,9 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
 } from "react-native";
 const Background = require("../../assets/background.jpg");
 const image = require("../../assets/gabungan.png");
@@ -32,49 +35,63 @@ export default function Daftar() {
       resizeMode="cover"
       style={styles.background}
     >
-      <View>
-        <Image source={image} style={styles.gambar1} />
-      </View>
-      <View style={styles.card}>
-        <Text
-          style={{
-            textAlign: "center",
-            fontSize: 30,
-            fontFamily: "Rubik",
-            fontWeight: "bold",
-            margin: 10,
-            marginTop: 30,
-          }}
-        >
-          Masuk atau Daftar
-        </Text>
-        <Text style={{ textAlign: "center", fontSize: 20, color: "#858494" }}>
-          Silahkan daftar untuk menikmati permainan
-        </Text>
+      <KeyboardAvoidingView behavior={"position"}>
+        <ScrollView>
+          <View
+            style={{
+              flex: 1,
+              // backgroundColor: "#fff",
+              alignItems: "center",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Image source={image} style={styles.gambar1} />
+          </View>
+          <View style={styles.card}>
+            <Text
+              style={{
+                textAlign: "center",
+                fontSize: 30,
+                fontFamily: "Rubik",
+                fontWeight: "bold",
+                margin: 10,
+                marginTop: 30,
+              }}
+            >
+              Masuk atau Daftar
+            </Text>
+            <Text
+              style={{ textAlign: "center", fontSize: 20, color: "#858494" }}
+            >
+              Silahkan daftar untuk menikmati permainan
+            </Text>
 
-        <View style={styles.container}>
-          <TextInput
-            style={styles.input}
-            placeholder="Username"
-            onChangeText={(text) => setUsername(text)}
-            value={username}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            secureTextEntry={true}
-            onChangeText={(text) => setPassword(text)}
-            value={password}
-          />
+            <View style={styles.container}>
+              <TextInput
+                style={styles.input}
+                placeholder="Username"
+                onChangeText={(text) => setUsername(text)}
+                value={username}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Password"
+                secureTextEntry={true}
+                onChangeText={(text) => setPassword(text)}
+                value={password}
+              />
 
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Login</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button1} onPress={handleLogin}>
-            <Text style={styles.buttonText1}>Buat Akun Baru</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+              <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                <Text style={styles.buttonText}>Login</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button1} onPress={handleLogin}>
+                <Text style={styles.buttonText1}>Buat Akun Baru</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </ImageBackground>
   );
 }
