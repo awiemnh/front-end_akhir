@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Image, Text, View } from "react-native";
 
-export default function _1SplashScreen() {
+const SplashScreen = () => {
   const images = [
     {
       uri:
@@ -35,7 +35,7 @@ export default function _1SplashScreen() {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   _1SplashScreen: {
@@ -104,3 +104,5 @@ const styles = StyleSheet.create({
     height: 44,
   },
 });
+
+export default SplashScreen;
