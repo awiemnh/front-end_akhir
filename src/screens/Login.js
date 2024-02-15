@@ -1,15 +1,18 @@
+// import libr or component or screen or items
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import { StyleSheet, Text, View, ImageBackground, Image, TextInput, Button, TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
 
-
+// define items
 const Background = require("../../assets/background.jpg");
 const image = require("../../assets/gabungan.png");
 
+// for be
 export default function Daftar() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
 
   // Fungsi untuk menangani login
   const handleLogin = () => {
@@ -75,6 +78,7 @@ export default function Daftar() {
   );
 }
 
+// styling for 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
