@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import axios from "axios";
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -15,17 +16,16 @@ import {
 const Background = require("../../assets/background.jpg");
 const image = require("../../assets/gabungan.png");
 
-export default function Daftar() {
+const Daftar = ({navigation}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Fungsi untuk menangani login
-  const handleSignup =async () => {
+  // Function to handle signup
+  const handleSignup = async () => {
     try {
-      const response = await axios.post("https://proper-stirring-serval.ngrok-free.app/api/signup",{ username, password });
+      const response = await axios.post("https://proper-stirring-serval.ngrok-free.app/api/signup",{ username,email, password });
       const token = response.data.token;
-      res.status(200).json({ message: 'Sign Up successful' });
       navigation.navigate("Daftar");
     } catch (error) {
       console.error(error);
@@ -92,7 +92,7 @@ export default function Daftar() {
       </View>
     </ImageBackground>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -163,3 +163,4 @@ const styles = StyleSheet.create({
   },
 });
 
+export default Daftar;
