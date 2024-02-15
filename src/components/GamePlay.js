@@ -73,14 +73,16 @@ const ChoiceCard = ({ player, choice: { image, name } }) => {
   );
 };
 
-export default function App() {
+const Gameplay = ({ navigation, route }) => {
   const [gamePrompt, setGamePrompt] = useState("Chose your weapon!");
   const [userChoice, setUserChoice] = useState({});
   const [computerChoice, setComputerChoice] = useState({});
   const [userScore, setUserScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
   const [lives, setLives] = useState(5);
-
+  
+  const { username, token } = route.params;
+  
   const onPress = (playerChoice) => {
     const [result, compChoice] = getRoundOutcome(playerChoice);
 
@@ -147,7 +149,7 @@ export default function App() {
       </View>
     </ImageBackground>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -221,3 +223,5 @@ const styles = StyleSheet.create({
 
   // }
 });
+
+export default Gameplay;
