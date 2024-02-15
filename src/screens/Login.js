@@ -1,15 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ImageBackground,
-  Image,
-  TextInput,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, View, ImageBackground, Image, TextInput, Button, TouchableOpacity } from "react-native";
+import { ScrollView } from "react-native";
+
+
 const Background = require("../../assets/background.jpg");
 const image = require("../../assets/gabungan.png");
 
@@ -27,6 +21,7 @@ export default function Daftar() {
   };
 
   return (
+    <ScrollView>
     <ImageBackground
       source={Background}
       resizeMode="cover"
@@ -76,6 +71,7 @@ export default function Daftar() {
         </View>
       </View>
     </ImageBackground>
+    </ScrollView>
   );
 }
 
