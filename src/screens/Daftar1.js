@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import axios from "axios";
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -12,21 +13,23 @@ import {
 } from "react-native";
 
 
-
 const Background = require("../../assets/background.jpg");
 const image = require("../../assets/gabungan.png");
 
-export default function Daftar() {
+const Daftar = ({navigation}) => {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // Fungsi untuk menangani login
-  const handleLogin = () => {
-    // Logika autentikasi bisa ditambahkan di sini
-    // Misalnya, memeriksa username dan password dengan data di server
-    console.log("Username:", username);
-    console.log("Password:", password);
-    // ... logika autentikasi lainnya
+  // Function to handle signup
+  const handleSignup = async () => {
+    try {
+      const response = await axios.post("https://proper-stirring-serval.ngrok-free.app/api/signup",{ username,email, password });
+      const token = response.data.token;
+      navigation.navigate("Daftar");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -63,6 +66,12 @@ export default function Daftar() {
           />
           <TextInput
             style={styles.input}
+            placeholder="Email"
+            onChangeText={(text) => setEmail(text)}
+            value={email}
+          />
+          <TextInput
+            style={styles.input}
             placeholder="Password"
             secureTextEntry={true}
             onChangeText={(text) => setPassword(text)}
@@ -76,14 +85,14 @@ export default function Daftar() {
             value={password}
           />
 
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <TouchableOpacity style={styles.button} onPress={handleSignup}>
             <Text style={styles.buttonText}>Daftar</Text>
           </TouchableOpacity>
         </View>
       </View>
     </ImageBackground>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -153,3 +162,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
 });
+
+export default Daftar;
