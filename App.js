@@ -6,6 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import SplashScreen from "./src/screens/SplashScreen";
 import OptionScreen from "./src/screens/Login";
 import Daftar from "./src/screens/Daftar1";
+import MainMenu from "./src/screens/MainMenu";
 import Gameplay from "./src/components/GamePlay";
 
 const Stack = createStackNavigator();
@@ -39,10 +40,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login" screenOptions={{headerShown: false}}>
+        <Stack.Navigator initialRouteName="Splash" options={{ headerShown: false }}>
           <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Login" component={OptionScreen} options={{ title: 'Login' }} />
           <Stack.Screen name="Daftar" component={Daftar} options={{ title: 'Daftar' }} />
+          <Stack.Screen name="Mainmenu" component={MainMenu} options={{ title: 'Mainmenu' }} />
           <Stack.Screen name="Gameplay" component={Gameplay} options={{ title: 'Gameplay' }} />
         </Stack.Navigator>
       </NavigationContainer>

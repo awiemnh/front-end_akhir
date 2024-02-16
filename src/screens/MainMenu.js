@@ -20,7 +20,8 @@ const handleLogin = () => {
   // ... logika autentikasi lainnya
 };
 
-const MainMenu = () => {
+const MainMenu = ({navigation,route}) => {
+  const { username, token } = route.params;
   return (
     <ImageBackground
       source={Background}
@@ -36,7 +37,7 @@ const MainMenu = () => {
           fontWeight: "bold",
         }}
       >
-        Hallo, NamaUser
+        Hallo, {username}
       </Text>
       <Text
         style={{
