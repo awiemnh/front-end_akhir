@@ -63,7 +63,7 @@ const MainMenu = () => {
         </View>
       </Swiper>
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Mulai Bermain</Text>
+        <Text style={styles.buttonText1}>Mulai Bermain</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button1} onPress={handleLogin}>
         <Text style={styles.buttonText}>Lihat Ranking</Text>
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
 
   button: {
     flex: 0,
-    backgroundColor: "#6A5AE0",
+    backgroundColor: "white",
     padding: 12,
     margin: 2,
     borderRadius: 24,
@@ -115,6 +115,12 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
+    fontSize: 20,
+    fontWeight: "500",
+    paddingHorizontal: 12,
+  },
+  buttonText1: {
+    color: "#6A5AE0",
     fontSize: 20,
     fontWeight: "500",
     paddingHorizontal: 12,
