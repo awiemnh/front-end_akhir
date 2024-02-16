@@ -25,8 +25,7 @@ const Daftar = ({navigation}) => {
   const handleSignup = async () => {
     try {
       const response = await axios.post("https://proper-stirring-serval.ngrok-free.app/api/signup",{ username,email, password });
-      const token = response.data.token;
-      navigation.navigate("Daftar");
+      navigation.navigate("Login");
     } catch (error) {
       console.error(error);
     }
