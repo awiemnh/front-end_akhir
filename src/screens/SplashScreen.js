@@ -1,3 +1,8 @@
+import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+
+
 import React, { useEffect } from 'react';
 import { StyleSheet, Image, Text, View } from "react-native";
 
