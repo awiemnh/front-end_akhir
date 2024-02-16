@@ -31,7 +31,7 @@ const Login = ({ navigation }) => {
       });
       const token = response.data.token;
       setToken(token);
-      navigation.navigate("Gameplay", { username, token });
+      navigation.replace("Mainmenu", { username, token });
     } catch (error) {
       console.error(error);
     }
