@@ -12,12 +12,9 @@ const gambar1 = require("../assets/caraousel-1.jpg");
 const gambar2 = require("../assets/caraousel-2.jpg");
 const Background = require("../assets/Splash-Screen.png");
 
-const handleLogin = () => {
-  // Logika autentikasi bisa ditambahkan di sini
-  // Misalnya, memeriksa username dan password dengan data di server
-  console.log("Username:", username);
-  console.log("Password:", password);
-  // ... logika autentikasi lainnya
+const handleGame = ({navigation}) => {
+  const { username, token } = route.params;
+  navigation.navigate("Gameplay",token);
 };
 
 const MainMenu = ({navigation,route}) => {
@@ -63,10 +60,10 @@ const MainMenu = ({navigation,route}) => {
           />
         </View>
       </Swiper>
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+      <TouchableOpacity style={styles.button} onPress={handleGame}>
         <Text style={styles.buttonText1}>Mulai Bermain</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button1} onPress={handleLogin}>
+      <TouchableOpacity style={styles.button1} onPress={handleGame}>
         <Text style={styles.buttonText}>Lihat Ranking</Text>
       </TouchableOpacity>
     </ImageBackground>
