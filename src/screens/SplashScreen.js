@@ -4,7 +4,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 import React, { useEffect } from 'react';
-import { View, Image, StyleSheet, Dimensions } from 'react-native';
+import { View, Image, StyleSheet, Dimensions, ImageBackground } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 
 const SplashScreen = ({navigation}) => {
@@ -17,11 +17,13 @@ const SplashScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       {/* Background Image */}
-      <Image
+      <ImageBackground
         source={require('../../src/assets/Splash-Screen.png')}
         style={styles.backgroundImage}
         resizeMode="cover"
-      />
+      >
+      </ImageBackground>
+
       {/* Icon Aplikasi */}
       <Image
         source={require('../../src/assets/App-logo-with-text.png')} 
