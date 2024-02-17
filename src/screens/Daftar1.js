@@ -14,6 +14,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
+  Platform,
 } from "react-native";
 
 const Background = require("../../assets/background.jpg");
@@ -62,9 +63,16 @@ const Daftar = ({navigation}) => {
       resizeMode="cover"
       style={styles.background}
     >
-    <KeyboardAvoidingView behavior={"position"}>
+    <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : null}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 0}>
       <ScrollView>
-      <View>
+      <View
+        style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        alignItems: "center",
+      }}>
         <Image source={image} style={styles.gambar1} />
       </View>
       <View style={styles.card}>
@@ -132,7 +140,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 16,
     marginTop: 50,
-    marginBottom: 30,
+    marginBottom: 56,
   },
   background: {
     flex: 1,
@@ -157,19 +165,25 @@ const styles = StyleSheet.create({
     marginBottom: 70,
     borderRadius: 40,
     width: 343,
-    height: 420,
+    height: 560,
   },
   title: {
     fontSize: 24,
     marginBottom: 16,
   },
   input: {
-    height: 40,
-    width: "80%",
-    borderColor: "gray",
+    height: 48,
+    width: "100%",
+    borderColor: "#E2E8F0",
     borderWidth: 1,
     marginBottom: 16,
     padding: 8,
+    borderRadius: 8,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 12,
+    paddingBottom: 12,
+    fontSize: 16,
   },
 
   button: {
