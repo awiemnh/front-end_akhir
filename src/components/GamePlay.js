@@ -6,10 +6,8 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  Platform,
-  ScrollView,
 } from "react-native";
-
+import GameOverOverlay from "./customGameOver";
 const Batu = require("../../assets/batu.png");
 const Kertas = require("../../assets/kertas.png");
 const Gunting = require("../../assets/gunting.png");
@@ -82,6 +80,7 @@ const Gameplay = ({ navigation, route }) => {
   const [userScore, setUserScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
   const [lives, setLives] = useState(5);
+  const [showOverlay, setShowOverlay] = useState(false);
   
   const { username, token } = route.params;
   
@@ -103,7 +102,7 @@ const Gameplay = ({ navigation, route }) => {
         setLives(lives - 1);
       }
       if (lives === 1) {
-        alert("PERMAINAN BERAKHIR");
+        setShowOverlay(true);
       }
     }
 
@@ -119,13 +118,13 @@ const Gameplay = ({ navigation, route }) => {
   };
 
   return (
-  <ScrollView>
     <ImageBackground
       source={Background} // Ganti URL dengan gambar yang Anda inginkan
       resizeMode="cover"
       style={styles.background}
     >
       <View style={styles.container}>
+      <GameOverOverlay visible={showOverlay} navigation={navigation}/>
         <Text
           style={{
             fontSize: 35,
@@ -151,7 +150,6 @@ const Gameplay = ({ navigation, route }) => {
         })}
       </View>
     </ImageBackground>
-  </ScrollView>
   );
 };
 
