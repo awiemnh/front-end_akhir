@@ -21,7 +21,7 @@ const Background = require("../assets/Splash-Screen.png");
 const MainMenu = ({navigation,route}) => {
   const {  username,token } = route.params;
   const handleGame = () => {
-    navigation.navigate("Gameplay",token);
+    navigation.navigate("Gameplay",username,token);
   };
   
   const handleLogout = async () => {
