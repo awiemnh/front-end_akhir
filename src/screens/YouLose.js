@@ -30,7 +30,7 @@ const YouLose = () => {
         style={{ width: 414, height: 402, marginTop: 100 }}
       />
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Main Lagi</Text>
+        <Text style={styles.buttonText1}>Main Lagi</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button1} onPress={handleLogin}>
         <Text style={styles.buttonText}>Kembali Ke Menu</Text>
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 
   button: {
     flex: 0,
-    backgroundColor: "#6A5AE0",
+    backgroundColor: "white",
     padding: 12,
     marginTop: 200,
     borderRadius: 24,
@@ -67,6 +67,12 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "white",
+    fontSize: 20,
+    fontWeight: "500",
+    paddingHorizontal: 12,
+  },
+  buttonText1: {
+    color: "#6A5AE0",
     fontSize: 20,
     fontWeight: "500",
     paddingHorizontal: 12,
