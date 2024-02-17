@@ -76,7 +76,9 @@ const Login = ({ navigation }) => {
         resizeMode="cover"
         style={styles.background}
       >
-        <KeyboardAvoidingView behavior={"position"}>
+        <KeyboardAvoidingView 
+        behavior={Platform.OS === "ios" ? "padding" : null}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 0}>
           <ScrollView>
           <View
             style={{
