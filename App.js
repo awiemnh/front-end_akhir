@@ -17,10 +17,10 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }} >
           <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
-          <Stack.Screen name="Login" component={OptionScreen} options={{ title: 'Login' }} />
-          <Stack.Screen name="Daftar" component={Daftar} options={{ title: 'Daftar' }} />
-          <Stack.Screen name="Mainmenu" component={MainMenu} options={{ title: 'Mainmenu' }} />
-          <Stack.Screen name="Gameplay" component={Gameplay} options={{ title: 'Gameplay' }} />
+          <Stack.Screen name="Login" component={OptionScreen} />
+          <Stack.Screen name="Daftar" component={Daftar} />
+          <Stack.Screen name="Mainmenu" component={MainMenu} />
+          <Stack.Screen name="Gameplay" component={Gameplay} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
