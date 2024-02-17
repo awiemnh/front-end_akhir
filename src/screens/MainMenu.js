@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import {
   View,
   Text,
@@ -12,15 +13,27 @@ const gambar1 = require("../assets/caraousel-1.jpg");
 const gambar2 = require("../assets/caraousel-2.jpg");
 const Background = require("../assets/Splash-Screen.png");
 
-const handleLogin = () => {
-  // Logika autentikasi bisa ditambahkan di sini
-  // Misalnya, memeriksa username dan password dengan data di server
-  console.log("Username:", username);
-  console.log("Password:", password);
-  // ... logika autentikasi lainnya
-};
 
-const MainMenu = () => {
+
+const MainMenu = ({navigation,route}) => {
+  const {  username,token } = route.params;
+  const handleGame = () => {
+    navigation.navigate("Gameplay",token);
+  };
+  
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post("w", {
+        username
+      },{headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+    }});
+      navigation.replace("Login", { username, token });
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <ImageBackground
       source={Background}
@@ -36,7 +49,7 @@ const MainMenu = () => {
           fontWeight: "bold",
         }}
       >
-        Hallo, NamaUser
+        Hallo, {username}
       </Text>
       <Text
         style={{
@@ -62,11 +75,11 @@ const MainMenu = () => {
           />
         </View>
       </Swiper>
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+      <TouchableOpacity style={styles.button} onPress={handleGame}>
         <Text style={styles.buttonText1}>Mulai Bermain</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button1} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Lihat Ranking</Text>
+      <TouchableOpacity style={styles.button1} onPress={handleLogout}>
+        <Text style={styles.buttonText}>Logout</Text>
       </TouchableOpacity>
     </ImageBackground>
   );
