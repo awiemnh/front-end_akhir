@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    
+
     "assetBundlePatterns": [
       "**/*","src/assets/fonts/*"
     ],
@@ -21,6 +21,30 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./src/assets/fonts/gomarice_no_continue.ttf",
+            "./src/assets/fonts/recharge_bd.ttf",
+            "./src/assets/fonts/Rubik-Black.ttf",
+            "./src/assets/fonts/Rubik-BlackItalic.ttf",
+            "./src/assets/fonts/Rubik-Bold.ttf",
+            "./src/assets/fonts/Rubik-BoldItalic.ttf",
+            "./src/assets/fonts/Rubik-ExtraBold.ttf",
+            "./src/assets/fonts/Rubik-ExtraBoldItalic.ttf",
+            "./src/assets/fonts/Rubik-Italic.ttf",
+            "./src/assets/fonts/Rubik-Light.ttf",
+            "./src/assets/fonts/Rubik-LightItalic.ttf",
+            "./src/assets/fonts/Rubik-Medium.ttf",
+            "./src/assets/fonts/Rubik-MediumItalic.ttf",
+            "./src/assets/fonts/Rubik-Regular.ttf",
+            "./src/assets/fonts/Rubik-SemiBold.ttf",
+            "./src/assets/fonts/Rubik-SemiBoldItalic.ttf"]
+        }
+      ]
+    ]
   }
 }
