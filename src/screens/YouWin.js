@@ -10,15 +10,14 @@ import {
 const Background = require("../assets/Splash-Screen.png");
 const Win = require("../assets/youwin.png");
 
-const handleLogin = () => {
-  // Logika autentikasi bisa ditambahkan di sini
-  // Misalnya, memeriksa username dan password dengan data di server
-  console.log("Username:", username);
-  console.log("Password:", password);
-  // ... logika autentikasi lainnya
-};
-
-const YouWin = () => {
+const YouWin = ({navigation,route}) => {
+  const {  username,token } = route.params;
+  const handleMainMenu = () => {
+    navigation.replace("Mainmenu",{ username, token });
+  };
+  const handleGame = () => {
+    navigation.replace("Gameplay",{ username, token });
+  };
   return (
     <ImageBackground
       source={Background}
@@ -26,10 +25,10 @@ const YouWin = () => {
       style={styles.background}
     >
       <Image source={Win} style={{ width: 339, height: 301, marginTop: 100 }} />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+      <TouchableOpacity style={styles.button} onPress={handleGame}>
         <Text style={styles.buttonText1}>Main Lagi</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button1} onPress={handleLogin}>
+      <TouchableOpacity style={styles.button1} onPress={handleMainMenu}>
         <Text style={styles.buttonText}>Kembali Ke Menu</Text>
       </TouchableOpacity>
     </ImageBackground>

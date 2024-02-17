@@ -81,9 +81,9 @@ const Gameplay = ({ navigation, route }) => {
   const [computerScore, setComputerScore] = useState(0);
   const [lives, setLives] = useState(5);
   const [showOverlay, setShowOverlay] = useState(false);
-  
+  //const [overlayType, setOverlayType] = useState(""); // New state to determine overlay type
+
   const { username, token } = route.params;
-  
   const onPress = (playerChoice) => {
     const [result, compChoice] = getRoundOutcome(playerChoice);
 
@@ -101,8 +101,16 @@ const Gameplay = ({ navigation, route }) => {
       if (lives > 0) {
         setLives(lives - 1);
       }
-      if (lives === 1) {
+    }
+
+    // Check for game over conditions
+    if (lives === 1) {
+      if (userScore > computerScore) {
         setShowOverlay(true);
+        navigation.navigate('Youwin',{ username, token });
+      } else if (userScore < computerScore) {
+        setShowOverlay(true);
+        navigation.navigate('Youlose',{ username, token });
       }
     }
 
@@ -124,7 +132,7 @@ const Gameplay = ({ navigation, route }) => {
       style={styles.background}
     >
       <View style={styles.container}>
-      <GameOverOverlay visible={showOverlay} navigation={navigation}/>
+      <GameOverOverlay visible={showOverlay}/>
         <Text
           style={{
             fontSize: 35,

@@ -3,16 +3,15 @@ import { View, Text, Image, Modal, StyleSheet, Dimensions } from 'react-native';
 
 const GameOverImage = require('../../assets/gameover.png');
 
-const GameOverOverlay = ({ visible, navigation }) => {
+const GameOverOverlay = ({ visible }) => {
   useEffect(() => {
     if (visible) {
       const timer = setTimeout(() => {
-        navigation.navigate('Youwin'); // Navigate to the "YouWinScreen" after a delay
-      }, 3000); // 3000 milliseconds = 3 seconds
+      }, 2000); // 3000 milliseconds = 3 seconds
 
       return () => clearTimeout(timer);
     }
-  }, [visible, navigation]);
+  }, [visible]);
 
   return (
     <Modal
@@ -27,6 +26,7 @@ const GameOverOverlay = ({ visible, navigation }) => {
     </Modal>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
