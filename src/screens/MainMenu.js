@@ -1,10 +1,13 @@
 import React from "react";
+import axios from "axios";
 import {
   View,
   Text,
   StyleSheet,
   Image,
   ImageBackground,
+  KeyboardAvoidingView,
+  ScrollView,
   TouchableOpacity,
 } from "react-native";
 import Swiper from "react-native-swiper";
@@ -12,19 +15,36 @@ const gambar1 = require("../assets/caraousel-1.jpg");
 const gambar2 = require("../assets/caraousel-2.jpg");
 const Background = require("../assets/Splash-Screen.png");
 
-const handleGame = ({navigation}) => {
-  const { username, token } = route.params;
-  navigation.navigate("Gameplay",token);
-};
+
 
 const MainMenu = ({navigation,route}) => {
-  const { username, token } = route.params;
+  const {  username,token } = route.params;
+  const handleGame = () => {
+    navigation.navigate("Gameplay",token);
+  };
+  
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post("https://proper-stirring-serval.ngrok-free.app/api/logout", {
+        username
+      },{headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+    }});
+      navigation.replace("Login", { username, token });
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
+    <ScrollView>
     <ImageBackground
       source={Background}
       resizeMode="cover"
       style={styles.background}
     >
+    <KeyboardAvoidingView behavior={"position"}>
+      <ScrollView>
       <Text
         style={{
           marginTop: 200,
@@ -63,10 +83,13 @@ const MainMenu = ({navigation,route}) => {
       <TouchableOpacity style={styles.button} onPress={handleGame}>
         <Text style={styles.buttonText1}>Mulai Bermain</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button1} onPress={handleGame}>
-        <Text style={styles.buttonText}>Lihat Ranking</Text>
-      </TouchableOpacity>
-    </ImageBackground>
+      <TouchableOpacity style={styles.button1} onPress={handleLogout}>
+        <Text style={styles.buttonText}>Logout</Text>
+        </TouchableOpacity>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </ImageBackground>
+    </ScrollView>
   );
 };
 
