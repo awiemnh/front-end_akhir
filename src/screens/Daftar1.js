@@ -10,6 +10,8 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  ScrollView,
 } from "react-native";
 
 
@@ -32,11 +34,14 @@ const Daftar = ({navigation}) => {
   };
 
   return (
+    <ScrollView>
     <ImageBackground
       source={Background}
       resizeMode="cover"
       style={styles.background}
     >
+    <KeyboardAvoidingView behavior={"position"}>
+      <ScrollView>
       <View>
         <Image source={image} style={styles.gambar1} />
       </View>
@@ -89,7 +94,10 @@ const Daftar = ({navigation}) => {
           </TouchableOpacity>
         </View>
       </View>
+      </ScrollView>
+      </KeyboardAvoidingView>
     </ImageBackground>
+    </ScrollView>
   );
 };
 

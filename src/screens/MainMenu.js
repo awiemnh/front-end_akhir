@@ -6,6 +6,8 @@ import {
   StyleSheet,
   Image,
   ImageBackground,
+  KeyboardAvoidingView,
+  ScrollView,
   TouchableOpacity,
 } from "react-native";
 import Swiper from "react-native-swiper";
@@ -35,11 +37,14 @@ const MainMenu = ({navigation,route}) => {
     }
   };
   return (
+    <ScrollView>
     <ImageBackground
       source={Background}
       resizeMode="cover"
       style={styles.background}
     >
+    <KeyboardAvoidingView behavior={"position"}>
+      <ScrollView>
       <Text
         style={{
           marginTop: 200,
@@ -80,8 +85,11 @@ const MainMenu = ({navigation,route}) => {
       </TouchableOpacity>
       <TouchableOpacity style={styles.button1} onPress={handleLogout}>
         <Text style={styles.buttonText}>Logout</Text>
-      </TouchableOpacity>
-    </ImageBackground>
+        </TouchableOpacity>
+          </ScrollView>
+        </KeyboardAvoidingView>
+      </ImageBackground>
+    </ScrollView>
   );
 };
 
