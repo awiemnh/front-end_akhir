@@ -23,7 +23,7 @@ const MainMenu = ({navigation,route}) => {
   
   const handleLogout = async () => {
     try {
-      const response = await axios.post("w", {
+      const response = await axios.post("https://proper-stirring-serval.ngrok-free.app/api/logout", {
         username
       },{headers: {
         Authorization: `Bearer ${token}`,
