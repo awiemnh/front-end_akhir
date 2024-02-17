@@ -6,6 +6,8 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
+  Platform,
+  ScrollView,
 } from "react-native";
 
 const Batu = require("../../assets/batu.png");
@@ -117,6 +119,7 @@ const Gameplay = ({ navigation, route }) => {
   };
 
   return (
+  <ScrollView>
     <ImageBackground
       source={Background} // Ganti URL dengan gambar yang Anda inginkan
       resizeMode="cover"
@@ -148,6 +151,7 @@ const Gameplay = ({ navigation, route }) => {
         })}
       </View>
     </ImageBackground>
+  </ScrollView>
   );
 };
 
