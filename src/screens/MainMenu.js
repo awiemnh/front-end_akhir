@@ -7,6 +7,7 @@ import {
   Image,
   ImageBackground,
   KeyboardAvoidingView,
+  Platform,
   ScrollView,
   TouchableOpacity,
 } from "react-native";
@@ -37,14 +38,11 @@ const MainMenu = ({navigation,route}) => {
     }
   };
   return (
-    <ScrollView>
     <ImageBackground
       source={Background}
       resizeMode="cover"
       style={styles.background}
     >
-    <KeyboardAvoidingView behavior={"position"}>
-      <ScrollView>
       <Text
         style={{
           marginTop: 200,
@@ -86,10 +84,7 @@ const MainMenu = ({navigation,route}) => {
       <TouchableOpacity style={styles.button1} onPress={handleLogout}>
         <Text style={styles.buttonText}>Logout</Text>
         </TouchableOpacity>
-          </ScrollView>
-        </KeyboardAvoidingView>
-      </ImageBackground>
-    </ScrollView>
+     </ImageBackground>
   );
 };
 

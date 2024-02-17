@@ -8,7 +8,8 @@ import OptionScreen from "./src/screens/Login";
 import Daftar from "./src/screens/Daftar1";
 import MainMenu from "./src/screens/MainMenu";
 import Gameplay from "./src/components/GamePlay";
-
+import YouWin from "./src/screens/YouWin";
+import YouLose from "./src/screens/YouLose";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -42,10 +43,12 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Splash" options={{ headerShown: false }}>
           <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
-          <Stack.Screen name="Login" component={OptionScreen} options={{ title: 'Login' }} />
-          <Stack.Screen name="Daftar" component={Daftar} options={{ title: 'Daftar' }} />
-          <Stack.Screen name="Mainmenu" component={MainMenu} options={{ title: 'Mainmenu' }} />
-          <Stack.Screen name="Gameplay" component={Gameplay} options={{ title: 'Gameplay' }} />
+          <Stack.Screen name="Login" component={OptionScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="Daftar" component={Daftar} options={{ headerShown: false }} />
+          <Stack.Screen name="Mainmenu" component={MainMenu} options={{ headerShown: false }} />
+          <Stack.Screen name="Gameplay" component={Gameplay} options={{ headerShown: false }} />
+          <Stack.Screen name="Youwin" component={YouWin} options={{ headerShown: false }} />
+          <Stack.Screen name="Youlose" component={YouLose} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="auto" />
