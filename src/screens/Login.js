@@ -42,6 +42,7 @@ const Login = ({ navigation }) => {
     "Rubik-SemiBoldItalic": require("../../src/assets/fonts/Rubik-SemiBoldItalic.ttf"),
   });
 
+  // Function to handle font not loaded
   if (!fontsLoaded && !fontError) {
     return null;
   }
@@ -49,6 +50,17 @@ const Login = ({ navigation }) => {
   // Function to handle login
   const handleLogin = async () => {
     try {
+    //Check for the Name TextInput
+    if (!username.trim()) {
+      alert('Harap Masukkan Username');
+      return;
+    }
+    //Check for the Password TextInput
+    if (!password.trim()) {
+      alert('Harap Masukkan Password');
+      return;
+    }
+    
       const response = await axios.post(
         "https://proper-stirring-serval.ngrok-free.app/api/login",
         {
@@ -121,6 +133,10 @@ const Login = ({ navigation }) => {
                 onChangeText={(text) => setUsername(text)}
                 value={username}
               />
+              {!!username.nameError && (
+              <Text style={{ color: "red" }}>{username.nameError}</Text>
+              )}
+
               <TextInput
                 style={styles.input}
                 placeholder="Password"
