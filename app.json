@@ -6,9 +6,9 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-
     "assetBundlePatterns": [
-      "**/*","src/assets/fonts/*"
+      "**/*",
+      "src/assets/fonts/*"
     ],
     "ios": {
       "supportsTablet": true
@@ -17,7 +17,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.projectakhir"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -42,9 +43,15 @@
             "./src/assets/fonts/Rubik-MediumItalic.ttf",
             "./src/assets/fonts/Rubik-Regular.ttf",
             "./src/assets/fonts/Rubik-SemiBold.ttf",
-            "./src/assets/fonts/Rubik-SemiBoldItalic.ttf"]
+            "./src/assets/fonts/Rubik-SemiBoldItalic.ttf"
+          ]
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "5b48a143-3c20-4893-a30e-d016904fe947"
+      }
+    }
   }
 }
