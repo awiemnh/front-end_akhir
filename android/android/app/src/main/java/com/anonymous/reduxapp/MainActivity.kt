@@ -1,4 +1,4 @@
-package com.alfanazizi.projectakhir
+package com.anonymous.reduxapp
 
 import android.os.Build
 import android.os.Bundle

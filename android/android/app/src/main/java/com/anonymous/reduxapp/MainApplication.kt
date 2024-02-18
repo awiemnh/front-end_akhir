@@ -1,4 +1,4 @@
-package com.alfanazizi.projectakhir
+package com.anonymous.reduxapp
 
 import android.app.Application
 import android.content.res.Configuration
