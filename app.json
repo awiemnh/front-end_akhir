@@ -29,7 +29,6 @@
         {
           "fonts": [
             "./src/assets/fonts/gomarice_no_continue.ttf",
-            "./src/assets/fonts/recharge_bd.ttf",
             "./src/assets/fonts/Rubik-Black.ttf",
             "./src/assets/fonts/Rubik-BlackItalic.ttf",
             "./src/assets/fonts/Rubik-Bold.ttf",
