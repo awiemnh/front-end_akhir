@@ -7,6 +7,7 @@ import {
   Image,
   ImageBackground,
   KeyboardAvoidingView,
+  Platform,
   ScrollView,
   TouchableOpacity,
 } from "react-native";
@@ -20,7 +21,7 @@ const Background = require("../assets/Splash-Screen.png");
 const MainMenu = ({navigation,route}) => {
   const {  username,token } = route.params;
   const handleGame = () => {
-    navigation.navigate("Gameplay",token);
+    navigation.navigate("Gameplay",{username,token});
   };
   
   const handleLogout = async () => {
@@ -37,14 +38,14 @@ const MainMenu = ({navigation,route}) => {
     }
   };
   return (
-    <ScrollView>
+    // <ScrollView>
     <ImageBackground
       source={Background}
       resizeMode="cover"
       style={styles.background}
     >
-    <KeyboardAvoidingView behavior={"position"}>
-      <ScrollView>
+    {/* <KeyboardAvoidingView behavior={"position"}>
+      <ScrollView> */}
       <Text
         style={{
           marginTop: 200,
@@ -86,10 +87,10 @@ const MainMenu = ({navigation,route}) => {
       <TouchableOpacity style={styles.button1} onPress={handleLogout}>
         <Text style={styles.buttonText}>Logout</Text>
         </TouchableOpacity>
-          </ScrollView>
-        </KeyboardAvoidingView>
+          {/* </ScrollView>
+        </KeyboardAvoidingView> */}
       </ImageBackground>
-    </ScrollView>
+    // </ScrollView>
   );
 };
 

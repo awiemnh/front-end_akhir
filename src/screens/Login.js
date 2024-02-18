@@ -1,4 +1,6 @@
 import { StatusBar } from "expo-status-bar";
+import { useFonts } from "expo-font";
+import { useCallback } from "react";
 import React, { useState } from "react";
 import axios from "axios";
 import {
@@ -14,21 +16,58 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
+
 const Background = require("../../assets/background.jpg");
 const image = require("../../assets/gabungan.png");
 
 const Login = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState("");
+
+  const [fontsLoaded, fontError] = useFonts({
+    "Rubik-Black": require("../../src/assets/fonts/Rubik-Black.ttf"),
+    "Rubik-BlackItalic": require("../../src/assets/fonts/Rubik-BlackItalic.ttf"),
+    "Rubik-Bold": require("../../src/assets/fonts/Rubik-Bold.ttf"),
+    "Rubik-BoldItalic": require("../../src/assets/fonts/Rubik-BoldItalic.ttf"),
+    "Rubik-ExtraBold": require("../../src/assets/fonts/Rubik-ExtraBold.ttf"),
+    "Rubik-ExtraBoldItalic": require("../../src/assets/fonts/Rubik-ExtraBoldItalic.ttf"),
+    "Rubik-Italic": require("../../src/assets/fonts/Rubik-Italic.ttf"),
+    "Rubik-Light": require("../../src/assets/fonts/Rubik-Light.ttf"),
+    "Rubik-LightItalic": require("../../src/assets/fonts/Rubik-LightItalic.ttf"),
+    "Rubik-Medium": require("../../src/assets/fonts/Rubik-Medium.ttf"),
+    "Rubik-MediumItalic": require("../../src/assets/fonts/Rubik-MediumItalic.ttf"),
+    "Rubik-Regular": require("../../src/assets/fonts/Rubik-Regular.ttf"),
+    "Rubik-SemiBold": require("../../src/assets/fonts/Rubik-SemiBold.ttf"),
+    "Rubik-SemiBoldItalic": require("../../src/assets/fonts/Rubik-SemiBoldItalic.ttf"),
+  });
+
+  // Function to handle font not loaded
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
 
   // Function to handle login
   const handleLogin = async () => {
     try {
-      const response = await axios.post("https://proper-stirring-serval.ngrok-free.app/api/login", {
-        username,
-        password,
-      });
+    //Check for the Name TextInput
+    if (!username.trim()) {
+      alert('Harap Masukkan Username');
+      return;
+    }
+    //Check for the Password TextInput
+    if (!password.trim()) {
+      alert('Harap Masukkan Password');
+      return;
+    }
+    
+      const response = await axios.post(
+        "https://proper-stirring-serval.ngrok-free.app/api/login",
+        {
+          username,
+          password,
+        }
+      );
       const token = response.data.token;
       setToken(token);
       navigation.replace("Mainmenu", { username, token });
@@ -49,63 +88,71 @@ const Login = ({ navigation }) => {
         resizeMode="cover"
         style={styles.background}
       >
-        <KeyboardAvoidingView behavior={"position"}>
+        <KeyboardAvoidingView 
+        behavior={Platform.OS === "ios" ? "padding" : null}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 0}>
           <ScrollView>
-            <View
+          <View
+            style={{
+              flex: 1,
+              alignItems: "center",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Image source={image} style={styles.gambar1} />
+          </View>
+          <View style={styles.card}>
+            <Text
               style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
-                alignItems: "center",
+                textAlign: "center",
+                fontSize: 30,
+                fontFamily: "Rubik-Medium",
+                fontWeight: "bold",
+                margin: 10,
+                marginTop: 30,
               }}
             >
-              <Image source={image} style={styles.gambar1} />
-            </View>
-            <View style={styles.card}>
-              <Text
-                style={{
-                  textAlign: "center",
-                  fontSize: 30,
-                  fontFamily: "Rubik",
-                  fontWeight: "bold",
-                  margin: 10,
-                  marginTop: 30,
-                }}
-              >
-                Masuk atau Daftar
-              </Text>
-              <Text
-                style={{ textAlign: "center", fontSize: 20, color: "#858494" }}
-              >
-                Silahkan daftar untuk menikmati permainan
-              </Text>
+              Masuk ke Akun
+            </Text>
+            <Text
+              style={{
+                fontFamily: "Rubik-Regular",
+                textAlign: "center",
+                fontSize: 20,
+                color: "#858494",
+              }}
+            >
+              Silahkan daftar untuk menikmati permainan
+            </Text>
 
-              <View style={styles.container}>
-                <TextInput
-                  style={styles.input}
-                  placeholder="Username"
-                  onChangeText={(text) => setUsername(text)}
-                  value={username}
-                />
-                <TextInput
-                  style={styles.input}
-                  placeholder="Password"
-                  secureTextEntry={true}
-                  onChangeText={(text) => setPassword(text)}
-                  value={password}
-                />
+            <View style={styles.container}>
+              <TextInput
+                style={styles.input}
+                placeholder="Username"
+                onChangeText={(text) => setUsername(text)}
+                value={username}
+              />
+              {!!username.nameError && (
+              <Text style={{ color: "red" }}>{username.nameError}</Text>
+              )}
 
-                <TouchableOpacity style={styles.button} onPress={handleLogin}>
-                  <Text style={styles.buttonText}>Login</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.button1}
-                  onPress={handleDaftar}
-                >
-                  <Text style={styles.buttonText1}>Buat Akun Baru</Text>
-                </TouchableOpacity>
-              </View>
+              <TextInput
+                style={styles.input}
+                placeholder="Password"
+                secureTextEntry={true}
+                onChangeText={(text) => setPassword(text)}
+                value={password}
+              />
+
+              <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                <Text style={styles.buttonText}>Login</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button1} onPress={handleDaftar}>
+                <Text style={styles.buttonText1}>Buat Akun Baru</Text>
+              </TouchableOpacity>
             </View>
+          </View>
           </ScrollView>
         </KeyboardAvoidingView>
       </ImageBackground>
@@ -116,13 +163,11 @@ const Login = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
     alignItems: "center",
     padding: 16,
-    marginTop: 50,
-    marginBottom: 30,
+    marginBottom: 16,
   },
   background: {
     flex: 1,
@@ -147,19 +192,25 @@ const styles = StyleSheet.create({
     marginBottom: 70,
     borderRadius: 40,
     width: 343,
-    height: 420,
+    height: 480,
   },
   title: {
     fontSize: 24,
     marginBottom: 16,
   },
   input: {
-    height: 40,
-    width: "80%",
-    borderColor: "gray",
+    height: 48,
+    width: "100%",
+    borderColor: "#E2E8F0",
     borderWidth: 1,
     marginBottom: 16,
     padding: 8,
+    borderRadius: 8,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 12,
+    paddingBottom: 12,
+    fontSize: 16,
   },
 
   button: {
@@ -175,12 +226,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonText: {
+    fontFamily: "Rubik-Medium",
     color: "white",
     fontSize: 20,
     fontWeight: "500",
     paddingHorizontal: 12,
   },
   buttonText1: {
+    fontFamily: "Rubik-Medium",
     color: "#6A5AE0",
     fontSize: 16,
     fontWeight: "500",

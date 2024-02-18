@@ -1,4 +1,6 @@
 import { StatusBar } from "expo-status-bar";
+import { useFonts } from 'expo-font';
+import { useCallback } from 'react';
 import axios from "axios";
 import React, { useState } from "react";
 import {
@@ -12,8 +14,8 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   ScrollView,
+  Platform,
 } from "react-native";
-
 
 const Background = require("../../assets/background.jpg");
 const image = require("../../assets/gabungan.png");
@@ -22,6 +24,27 @@ const Daftar = ({navigation}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [fontsLoaded,fontError] = useFonts({
+    'Rubik-Black': require('../../src/assets/fonts/Rubik-Black.ttf'),
+    'Rubik-BlackItalic': require('../../src/assets/fonts/Rubik-BlackItalic.ttf'),
+    'Rubik-Bold': require('../../src/assets/fonts/Rubik-Bold.ttf'),
+    'Rubik-BoldItalic': require('../../src/assets/fonts/Rubik-BoldItalic.ttf'),
+    'Rubik-ExtraBold': require('../../src/assets/fonts/Rubik-ExtraBold.ttf'),
+    'Rubik-ExtraBoldItalic': require('../../src/assets/fonts/Rubik-ExtraBoldItalic.ttf'),
+    'Rubik-Italic': require('../../src/assets/fonts/Rubik-Italic.ttf'),
+    'Rubik-Light': require('../../src/assets/fonts/Rubik-Light.ttf'),
+    'Rubik-LightItalic': require('../../src/assets/fonts/Rubik-LightItalic.ttf'),
+    'Rubik-Medium': require('../../src/assets/fonts/Rubik-Medium.ttf'),
+    'Rubik-MediumItalic': require('../../src/assets/fonts/Rubik-MediumItalic.ttf'),
+    'Rubik-Regular': require('../../src/assets/fonts/Rubik-Regular.ttf'),
+    'Rubik-SemiBold': require('../../src/assets/fonts/Rubik-SemiBold.ttf'),
+    'Rubik-SemiBoldItalic': require('../../src/assets/fonts/Rubik-SemiBoldItalic.ttf'),
+  });
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
 
   // Function to handle signup
   const handleSignup = async () => {
@@ -40,9 +63,16 @@ const Daftar = ({navigation}) => {
       resizeMode="cover"
       style={styles.background}
     >
-    <KeyboardAvoidingView behavior={"position"}>
+    <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : null}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 0}>
       <ScrollView>
-      <View>
+      <View
+        style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        alignItems: "center",
+      }}>
         <Image source={image} style={styles.gambar1} />
       </View>
       <View style={styles.card}>
@@ -50,14 +80,14 @@ const Daftar = ({navigation}) => {
           style={{
             textAlign: "center",
             fontSize: 30,
-            fontFamily: "Rubik",
+            fontFamily: "Rubik-Medium",
             fontWeight: "bold",
             margin: 10,
           }}
         >
           Daftar
         </Text>
-        <Text style={{ textAlign: "center", fontSize: 20, color: "#858494" }}>
+        <Text style={{ fontFamily: "Rubik-Regular", textAlign: "center", fontSize: 20, color: "#858494" }}>
           Silahkan daftar untuk menikmati permainan
         </Text>
 
@@ -110,7 +140,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 16,
     marginTop: 50,
-    marginBottom: 30,
+    marginBottom: 56,
   },
   background: {
     flex: 1,
@@ -135,19 +165,25 @@ const styles = StyleSheet.create({
     marginBottom: 70,
     borderRadius: 40,
     width: 343,
-    height: 420,
+    height: 560,
   },
   title: {
     fontSize: 24,
     marginBottom: 16,
   },
   input: {
-    height: 40,
-    width: "80%",
-    borderColor: "gray",
+    height: 48,
+    width: "100%",
+    borderColor: "#E2E8F0",
     borderWidth: 1,
     marginBottom: 16,
     padding: 8,
+    borderRadius: 8,
+    paddingLeft: 16,
+    paddingRight: 16,
+    paddingTop: 12,
+    paddingBottom: 12,
+    fontSize: 16,
   },
 
   button: {
@@ -163,6 +199,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   buttonText: {
+    fontFamily: "Rubik-Medium",
     color: "white",
     fontSize: 20,
     fontWeight: "500",
