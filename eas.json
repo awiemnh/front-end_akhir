@@ -1,19 +1,7 @@
 {
   "cli": {
     "version": ">= 7.2.0",
-    "package.json": {
-      "name": "FRONT-END_AKHIR",
-      "version": "1.0.0",
-      "description": "Description of your project",
-      "main": "index.js",
-      "scripts": {
-        "start": "node index.js"
-      },
-      "keywords": [],
-      "author": "Your Name",
-      "license": "MIT"
-    }
-  },
+    },
   "build": {
     "development": {
       "developmentClient": true,
@@ -26,5 +14,8 @@
   },
   "submit": {
     "production": {}
-  }
+  },
+  "cli": {
+    "requireCommit": true
+  },
 }
