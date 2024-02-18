@@ -1,4 +1,4 @@
-rootProject.name = 'projectakhir'
+rootProject.name = 'redux-app'
 
 dependencyResolutionManagement {
   versionCatalogs {
