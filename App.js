@@ -10,6 +10,7 @@ import MainMenu from "./src/screens/MainMenu";
 import Gameplay from "./src/components/GamePlay";
 import YouWin from "./src/screens/YouWin";
 import YouLose from "./src/screens/YouLose";
+import 'react-native-gesture-handler';
 const Stack = createStackNavigator();
 
 export default function App() {
