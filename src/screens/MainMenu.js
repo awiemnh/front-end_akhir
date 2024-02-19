@@ -43,8 +43,7 @@ const MainMenu = ({navigation,route}) => {
       resizeMode="cover"
       style={styles.background}
     >
-    {/* <KeyboardAvoidingView behavior={"position"}>
-      <ScrollView> */}
+   
       <Text
         style={{
           marginTop: 200,
