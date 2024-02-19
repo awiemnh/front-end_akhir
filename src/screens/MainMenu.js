@@ -85,8 +85,6 @@ const MainMenu = ({navigation,route}) => {
       <TouchableOpacity style={styles.button1} onPress={handleLogout}>
         <Text style={styles.buttonText}>Logout</Text>
         </TouchableOpacity>
-          {/* </ScrollView>
-        </KeyboardAvoidingView> */}
       </ImageBackground>
    </ScrollView>
   );
